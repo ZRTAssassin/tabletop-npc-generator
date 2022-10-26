@@ -27,16 +27,14 @@ module.exports = {
     }
   },
   createPost: async (req, res) => {
+    console.log(req.body);
     try {
-      // Upload image to cloudinary
-      const result = await cloudinary.uploader.upload(req.file.path);
 
       await Post.create({
-        title: req.body.title,
-        image: result.secure_url,
-        cloudinaryId: result.public_id,
+        traitName: req.body.traitName,
         caption: req.body.caption,
-        likes: 0,
+        category: req.body.category,
+        deck: req.body.deck,
         user: req.user.id,
       });
       console.log("Post has been added!");

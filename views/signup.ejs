@@ -1,39 +1,74 @@
 <%- include('partials/header') -%>
-    <main class="container">
-        <div class="row justify-content-center">
-            <section class="col-6 mt-5">
-                <% if (locals.messages.errors) { %>
-                    <% messages.errors.forEach( el => { %>
-                        <div class="alert alert-danger"><%= el.msg %></div>
-                    <% }) %>    
-                <% } %>
+  <main class="container mx-auto mt-5">
+    <div class="row flex flex-col justify-center items-center">
+      <section class="content-center">
+        <% if (locals.messages.errors) { %>
+          <% messages.errors.forEach( el=> { %>
+            <div class="alert alert-danger">
+              <%= el.msg %>
+            </div>
+            <% }) %>
+              <% } %>
                 <% if (locals.messages.info) { %>
-                    <% messages.info.forEach( el => { %>
-                        <div class="alert alert-info"><%= el.msg %></div>
-                    <% }) %>    
-                <% } %>
-                <form action="/signup" method="POST">
-                    <div class="mb-3">
-                        <label for="userName" class="form-label">User Name</label>
-                        <input type="text" class="form-control" id="userName" name="userName">
-                      </div>
-                    <div class="mb-3">
-                      <label for="exampleInputEmail1" class="form-label">Email address</label>
-                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email">
-                      <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                  <% messages.info.forEach( el=> { %>
+                    <div class="alert alert-info">
+                      <%= el.msg %>
                     </div>
-                    <div class="mb-3">
-                      <label for="password" class="form-label">Password</label>
-                      <input type="password" class="form-control" id="password" name="password">
-                    </div>
-                    <div class="mb-3">
-                        <label for="confirmPassword" class="form-label">Confirm Password</label>
-                        <input type="password" class="form-control" id="confirmPassword" name="confirmPassword">
-                      </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                  </form>
-            </section>
-        </div>
-    </main>
+                    <% }) %>
+                      <% } %>
+                        <!-- <form action="/signup" method="POST"
+                          class="flex flex-col justify-center items-center content-center">
+                          <div class="mb-3">
+                            <label for="userName" class="form-label">User Name</label>
+                            <input type="text" class="form-control" id="userName" name="userName">
+                          </div>
+                          <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1"
+                              aria-describedby="emailHelp" name="email">
+                          </div>
+                          <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="password" name="password">
+                          </div>
+                          <div class="mb-3">
+                            <label for="confirmPassword" class="form-label">Confirm Password</label>
+                            <input type="password" class="form-control" id="confirmPassword" name="confirmPassword">
+                          </div>
+                          <button type="submit" class="btn btn-primary">Submit</button>
+                        </form> -->
 
-<%- include('partials/footer') -%>
+                        <div class="bg-grey-lighter min-h-screen flex flex-col mt-2">
+                          <form action="/signup" method="POST">
+                            <div
+                              class="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
+                              <div class="bg-white px-6 py-8 rounded shadow-md text-black w-full">
+                                <h1 class="mb-8 text-3xl text-center">Sign up</h1>
+                                <input type="text" class="block border border-grey-light w-full p-3 rounded mb-4"
+                                  name="userName" id="userName" placeholder="Username" />
+
+                                <input type="text" class="block border border-grey-light w-full p-3 rounded mb-4"
+                                  name="email" id="exampleInputEmail1" placeholder="Email" />
+
+                                <input type="password" class="block border border-grey-light w-full p-3 rounded mb-4"
+                                  name="password" id="password" placeholder="Password" />
+
+                                <input type="password" class="block border border-grey-light w-full p-3 rounded mb-4"
+                                  id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" />
+
+                                <button type="submit" class="btn btn-primary btn-wide">Create
+                                  Account</button>
+                                <div class="text-grey-dark mt-6">
+                                  Already have an account?
+                                  <a class="no-underline border-b border-blue text-blue" href="../login/">
+                                    Log in
+                                  </a>.
+                                </div>
+                              </div>
+                          </form>
+                        </div>
+      </section>
+    </div>
+  </main>
+
+  <%- include('partials/footer') -%>

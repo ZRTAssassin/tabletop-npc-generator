@@ -1,46 +1,77 @@
 <%- include('partials/header') -%>
-<div class="container">
-  <div class="row mt-5">
+  <div class="container mx-auto">
+    <div class="row mt-5">
       <div class="col-6">
-          <div>
-              <p><strong>User Name</strong>: <%= user.userName %></p>
-              <p><strong>Email</strong>: <%= user.email %></p>
-              <a href="/logout" class="col-3 btn btn-primary">Logout</a>
-          </div>
-          <div class="mt-5">
-            <h2>Add a post</h2>
-            <form action="/post/createPost" enctype="multipart/form-data" method="POST">
-              <div class="mb-3">
-                  <label for="title" class="form-label">Title</label>
-                  <input type="text" class="form-control" id="title" name="title">
-              </div>
-              <div class="mb-3">
-                <label for="caption" class="form-label">Caption</label>
-                <textarea class="form-control" id="caption" name="caption"></textarea>
-              </div>
-              <div class="mb-3">
-                <label for="imgUpload" class="form-label">Image</label>
-                <input type="file" class="form-control" id="imageUpload" name="file">
-              </div>
-              <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
-            </form>
-          </div>
+        <div>
+          <p><strong>User Name</strong>: <%= user.userName %>
+          </p>
+          <p><strong>Email</strong>: <%= user.email %>
+          </p>
+          <a href="/logout" class="col-3 btn btn-primary">Logout</a>
+        </div>
+        <div class="mt-5">
+          <h2>Add a trait</h2>
+          <form action="/post/createPost" method="POST" id="newTrait">
+            <div class="form-control w-full max-w-xs">
+              <label class="label">
+                <label for="name" class="label-text">Name</label>
+              </label>
+              <input type="text" placeholder="Name here" name="traitName" id="traitName"
+                class="input input-bordered input-primary w-full max-w-xs" />
+            </div>
+            <div class="form-control mb-3">
+              <label for="caption" class="form-label">Description</label>
+              <textarea class="form-control textarea textarea-primary" id="caption" name="caption"></textarea>
+            </div>
+            <div class="form-control">
+              <label class="label">
+                <span class="label-text">Category</span>
+              </label>
+              <select form="newTrait" name="category" id="category" class="select select-primary w-full max-w-xs">
+                <option disabled selected>Select one</option>
+                <option>Flaws</option>
+                <option>Motivation</option>
+                <option>Strengths</option>
+                <option>Given Circumstances</option>
+                <option>Occupations</option>
+                <option>Secrets</option>
+                <option>Formative Events</option>
+                <option>Inciting Incidents</option>
+              </select>
+            </div>
+            <div class="form-control">
+              <label class="label">
+                <span class="label-text">Deck Origin</span>
+              </label>
+              <select form="newTrait" name="deck" id="deck" class="select select-primary w-full max-w-xs">
+                <option disabled selected>Select one</option>
+                <option>Basic</option>
+                <option>Fantasy</option>
+                <option>Horror</option>
+                <option>Sci-Fi</option>
+              </select>
+            </div>
+            <div class="pt-6">
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </form>
+        </div>
       </div>
       <div class="col-6">
         <ul class="row list-unstyled">
-        <% for(var i=0; i<posts.length; i++) {%>
-          <li class="col-6 justify-content-between mt-5">
-            <a href="/post/<%= posts[i]._id%>">
-              <img class="img-fluid" src="<%= posts[i].image%>">
-            </a>
-          </li>
-        <% } %>
+          <% for(var i=0; i<posts.length; i++) {%>
+            <li class="col-6 justify-content-between mt-5">
+              <a href="/post/<%= posts[i]._id%>">
+                <img class="img-fluid" src="<%= posts[i].image%>">
+              </a>
+            </li>
+            <% } %>
         </ul>
         <div class="row justify-content-center mt-5">
           <a class="btn btn-primary" href="/feed">Return to Feed</a>
-        </div>  
-      </div>  
+        </div>
+      </div>
     </div>
   </div>
-</div>
-<%- include('partials/footer') -%>
+  </div>
+  <%- include('partials/footer') -%>

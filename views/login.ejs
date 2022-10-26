@@ -1,40 +1,65 @@
 <%- include('partials/header') -%>
 
-<main class="container">
-  <div class="row justify-content-center">
-    <section class="col-6 mt-5">
-      <% if (locals.messages.errors) { %> <% messages.errors.forEach( el => { %>
-      <div class="alert alert-danger"><%= el.msg %></div>
-      <% }) %> <% } %> <% if (locals.messages.info) { %> <%
-      messages.info.forEach( el => { %>
-      <div class="alert alert-info"><%= el.msg %></div>
-      <% }) %> <% } %>
-      <form action="/login" method="POST">
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label"
-            >Email address</label
-          >
-          <input
-            type="email"
-            class="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
-            name="email"
-          />
-        </div>
-        <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Password</label>
-          <input
-            type="password"
-            class="form-control"
-            id="exampleInputPassword1"
-            name="password"
-          />
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
-    </section>
-  </div>
-</main>
+  <main class="container mx-auto">
+    <div class="row flex foex-col justify-center items-center">
+      <section class="col-6 mt-5">
+        <% if (locals.messages.errors) { %>
+          <% messages.errors.forEach( el=> { %>
+            <div class="alert alert-danger">
+              <%= el.msg %>
+            </div>
+            <% }) %>
+              <% } %>
+                <% if (locals.messages.info) { %>
+                  <% messages.info.forEach( el=> { %>
+                    <div class="alert alert-info">
+                      <%= el.msg %>
+                    </div>
+                    <% }) %>
+                      <% } %>
+                        <!-- <form action="/login" method="POST">
+                          <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1"
+                              aria-describedby="emailHelp" name="email" />
+                          </div>
+                          <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="exampleInputPassword1" name="password" />
+                          </div>
+                          <button type="submit" class="btn btn-primary">Submit</button>
+                        </form> -->
 
-<%- include('partials/footer') -%>
+                        <div class="bg-grey-lighter min-h-screen flex flex-col">
+                          <form action="/login" method="POST">
+                            <div
+                              class="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
+                              <div class="bg-white px-6 py-8 rounded shadow-md text-black w-full">
+                                <h1 class="mb-8 text-3xl text-center">Login</h1>
+
+                                <input type="email" class="block border border-grey-light w-full p-3 rounded mb-4"
+                                  id="exampleInputEmail1" aria-describedby="emailHelp" name="email"
+                                  placeholder="Email" />
+                                <input type="password" class="block border border-grey-light w-full p-3 rounded mb-4"
+                                  name="password" placeholder="Password" />
+
+                                <button type="submit" class="btn btn-primary btn-wide">Create
+                                  Account</button>
+
+
+                              </div>
+
+                              <div class="text-grey-dark mt-6">
+                                Don't have an account?
+                                <a class="no-underline border-b border-blue text-blue" href="../signup/">
+                                  Signup
+                                </a>.
+                              </div>
+                            </div>
+                          </form>
+                        </div>
+      </section>
+    </div>
+  </main>
+
+  <%- include('partials/footer') -%>

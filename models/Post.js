@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const PostSchema = new mongoose.Schema({
-  title: {
+  traitName: {
     type: String,
     required: true,
   },
@@ -9,8 +9,12 @@ const PostSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  category:{
+    type: String,
+    required: true,
+  },
   deck: {
-    type: Number,
+    type: String,
     required: true,
   },
   user: {
