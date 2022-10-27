@@ -1,9 +1,9 @@
 <%- include('partials/header') -%>
   <div class="container mx-auto">
-    <div class="row justify-content-center mt-5">
-      <ul class="row list-unstyled">
+    <div class="row justify-center mt-5">
+      <ul class="flex flex-row list-unstyled">
         <% for(var i=0; i<posts.length; i++) {%>
-          <li class="col-6 justify-content-between mt-5">
+          <li class="basis-1/4 mt-5">
             <a href="/post/<%= posts[i]._id%>">
               <h2>
                 Name: <%= posts[i].traitName %>
