@@ -1,7 +1,7 @@
 <%- include('partials/header') -%>
   <div class="container mx-auto">
     <div class="row justify-center mt-5">
-      <ul class="flex flex-row list-unstyled">
+      <ul class="flex flex-row flex-wrap list-unstyled">
         <% for(var i=0; i<posts.length; i++) {%>
           <li class="basis-1/4 mt-5">
             <a href="/post/<%= posts[i]._id%>">
