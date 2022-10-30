@@ -24,17 +24,27 @@
             </a> -->
 
             <div class="card w-96 bg-base-100 shadow-xl h-64">
-              <div class="card-body">
+              <div class="card-body flex justify-between">
                 <div class="tooltip" data-tip="Name">
-                  <h2 class="card-title"><%= posts[i].traitName %></h2>
+                  <h2 class="card-title">
+                    <%= posts[i].traitName %>
+                  </h2>
                 </div>
-                  <p><%= posts[i].caption %></p>
+                <div class="tooltip" data-tip="Description">
+                  <p>
+                    <%= posts[i].caption %>
+                  </p>
+                </div>
                 <div class="card-actions justify-around">
                   <div class="tooltip" data-tip="Deck">
-                    <button class="btn btn-secondary"><%= posts[i].deck%></button>
+                    <button class="btn btn-secondary">
+                      <%= posts[i].deck%>
+                    </button>
                   </div>
                   <div class="tooltip" data-tip="Category">
-                    <button class="btn btn-primary"><%= posts[i].category%></button>
+                    <button class="btn btn-primary">
+                      <%= posts[i].category%>
+                    </button>
                   </div>
                 </div>
               </div>
