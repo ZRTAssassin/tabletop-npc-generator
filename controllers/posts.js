@@ -1,5 +1,6 @@
 const cloudinary = require("../middleware/cloudinary");
 const Post = require("../models/Post");
+const mongoose = require("mongoose");
 
 module.exports = {
   getProfile: async (req, res) => {
@@ -13,7 +14,7 @@ module.exports = {
   getFeed: async (req, res) => {
     try {
       const posts = await Post.find().sort({ createdAt: "desc" }).lean();
-      console.log(posts);
+      // console.log(posts);
       res.render("feed.ejs", { posts: posts });
     } catch (err) {
       console.log(err);
@@ -27,10 +28,32 @@ module.exports = {
       console.log(err);
     }
   },
+  getNumbers: async (req, res) => {
+    console.log("OPUINPIUBNPOIUBP");
+    try {
+      const num = Number(req.params.num);
+      const posts = await Post.aggregate([
+        { $match: { user: mongoose.Types.ObjectId(req.user.id) } },
+        { $sample: { size: num } },
+      ]);
+      console.log(posts);
+      // const posts = await Post.find({ user: req.user.id });
+      // [{_id: `635b8a399d456a002760da3f`,
+      // traitName: "Need Rival's Help",
+      // caption: 'Finds themselves in a predicament that requires the help of their old rival.',
+      // category: 'Inciting Incidents',
+      // deck: 'Basic',
+      // user: `635b21ab11a68a0025a2afff`,
+      // createdAt: `2022-10-28T07:52:25.660Z`,
+      // __v: 0}]
+      res.render("getNumbers.ejs", { posts: posts });
+    } catch (err) {
+      console.log(err);
+    }
+  },
   createPost: async (req, res) => {
     console.log(req.body);
     try {
-
       await Post.create({
         traitName: req.body.traitName,
         caption: req.body.caption,

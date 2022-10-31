@@ -1,0 +1,56 @@
+<%- include('partials/header') -%>
+    <div class="container mx-auto">
+        <div class="form-control">
+            <label class="label">
+                <span class="label-text">Number of traits</span>
+            </label>
+            <select class="select select-primary w-100 max-w-xs">
+                <option disabled selected>How many of each do you want?</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </select>
+            <div class="w-4 pt-6">
+                <button type="submit" class="btn btn-primary">Get Traits</button>
+            </div>
+        </div>
+        <ul class="flex flex-row flex-wrap list-unstyled">
+            <% for(var i=0; i<posts.length; i++) {%>
+                <li class="basis-1/4 pt-5 pb-5 h-64">
+                    <div class="card w-96 bg-neutral shadow-xl h-64">
+                        <a href="/post/<%= posts[i]._id%>">
+                            <div class="card-body flex justify-between">
+                                <div class="tooltip" data-tip="Name">
+                                    <h2 class="card-title text-secondary-focus">
+                                        <%= posts[i].traitName %>
+                                    </h2>
+                                </div>
+                                <div class="tooltip" data-tip="Description">
+                                    <p>
+                                        <%= posts[i].caption %>
+                                    </p>
+                                </div>
+                                <div class="card-actions justify-around">
+                                    <div class="tooltip" data-tip="Deck">
+                                        <button class="btn btn-secondary">
+                                            <%= posts[i].deck%>
+                                        </button>
+                                    </div>
+                                    <div class="tooltip" data-tip="Category">
+                                        <button class="btn btn-primary">
+                                            <%= posts[i].category%>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                </li>
+                <% } %>
+        </ul>
+        <div class="divider pt-5 pb-5"></div>
+    </div>
+
+    <%- include('partials/footer') -%>
