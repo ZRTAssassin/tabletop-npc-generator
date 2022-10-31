@@ -29,7 +29,6 @@ module.exports = {
     }
   },
   getNumbers: async (req, res) => {
-    console.log("OPUINPIUBNPOIUBP");
     try {
       const num = Number(req.params.num);
       const posts = await Post.aggregate([
