@@ -35,17 +35,34 @@ module.exports = {
         { $match: { user: mongoose.Types.ObjectId(req.user.id) } },
         { $sample: { size: num } },
       ]);
-      console.log(posts);
-      // const posts = await Post.find({ user: req.user.id });
-      // [{_id: `635b8a399d456a002760da3f`,
-      // traitName: "Need Rival's Help",
-      // caption: 'Finds themselves in a predicament that requires the help of their old rival.',
-      // category: 'Inciting Incidents',
-      // deck: 'Basic',
-      // user: `635b21ab11a68a0025a2afff`,
-      // createdAt: `2022-10-28T07:52:25.660Z`,
-      // __v: 0}]
-      res.render("getNumbers.ejs", { posts: posts });
+      const titles = [
+        "Flaws",
+        "Motivation",
+        "Strengths",
+        "Given Circumstances",
+        "Ocupations",
+        "Secrets",
+        "Formative Events",
+        "Inciting Incidents",
+      ];
+      const flaws = await Post.aggregate([
+        {
+          $match: {
+            category: "Flaws",
+          },
+        },
+        { $sample: { size: num } },
+      ]);
+      console.log(flaws);
+      // Flaws
+      // MotivationF
+      // Strengths
+      // Given Circumstances
+      // Occupations
+      // Secrets
+      // Formative Events
+      // Inciting Incidents
+      res.render("getNumbers.ejs", { titles: titles, posts: flaws });
     } catch (err) {
       console.log(err);
     }

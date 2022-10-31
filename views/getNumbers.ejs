@@ -1,55 +1,65 @@
 <%- include('partials/header') -%>
     <div class="container mx-auto">
-        <div class="form-control">
+        <div class="form-control mb-5">
             <label class="label">
                 <span class="label-text">Number of traits</span>
             </label>
-            <select class="select select-primary w-100 max-w-xs">
-                <option disabled selected>How many of each do you want?</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-            </select>
-            <div class="w-4 pt-6">
-                <button type="submit" class="btn btn-primary">Get Traits</button>
+            <div class="btn-group lg:btn-group-horizontal">
+                <a href="/post/generate/getNumbers/1" class="btn">1</a>
+                <a href="/post/generate/getNumbers/2" class="btn">2</a>
+                <a href="/post/generate/getNumbers/3" class="btn">3</a>
+                <a href="/post/generate/getNumbers/4" class="btn">4</a>
+                <a href="/post/generate/getNumbers/5" class="btn">5</a>
+                <a href="/post/generate/getNumbers/6" class="btn">6</a>
+                <a href="/post/generate/getNumbers/7" class="btn">7</a>
+                <a href="/post/generate/getNumbers/8" class="btn">8</a>
+                <a href="/post/generate/getNumbers/9" class="btn">9</a>
             </div>
         </div>
-        <ul class="flex flex-row flex-wrap list-unstyled">
-            <% for(var i=0; i<posts.length; i++) {%>
-                <li class="basis-1/4 pt-5 pb-5 h-64">
-                    <div class="card w-96 bg-neutral shadow-xl h-64">
-                        <a href="/post/<%= posts[i]._id%>">
-                            <div class="card-body flex justify-between">
-                                <div class="tooltip" data-tip="Name">
-                                    <h2 class="card-title text-secondary-focus">
-                                        <%= posts[i].traitName %>
-                                    </h2>
-                                </div>
-                                <div class="tooltip" data-tip="Description">
-                                    <p>
-                                        <%= posts[i].caption %>
-                                    </p>
-                                </div>
-                                <div class="card-actions justify-around">
-                                    <div class="tooltip" data-tip="Deck">
-                                        <button class="btn btn-secondary">
-                                            <%= posts[i].deck%>
-                                        </button>
-                                    </div>
-                                    <div class="tooltip" data-tip="Category">
-                                        <button class="btn btn-primary">
-                                            <%= posts[i].category%>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
+        <div tabindex="0" class="collapse border border-base-300 bg-base-100 rounded-box">
+            <div class="collapse-title text-xl font-medium">
+                <%= titles[0] %>
+            </div>
+            <div class="collapse-content">
 
-                </li>
-                <% } %>
-        </ul>
+                <ul class="flex flex-row flex-wrap justify-around list-unstyled">
+
+                    <% for(var i=0; i<posts.length; i++) {%>
+                        <li class="basis-1/4 pt-5 pb-5 h-64 m-5">
+                            <div class="card w-96 bg-neutral shadow-xl h-64">
+                                <a href="/post/<%= posts[i]._id%>">
+                                    <div class="card-body flex justify-between">
+                                        <div class="tooltip" data-tip="Name">
+                                            <h2 class="card-title text-secondary-focus">
+                                                <%= posts[i].traitName %>
+                                            </h2>
+                                        </div>
+                                        <div class="tooltip" data-tip="Description">
+                                            <p>
+                                                <%= posts[i].caption %>
+                                            </p>
+                                        </div>
+                                        <div class="card-actions justify-around">
+                                            <div class="tooltip" data-tip="Deck">
+                                                <button class="btn btn-secondary">
+                                                    <%= posts[i].deck%>
+                                                </button>
+                                            </div>
+                                            <div class="tooltip" data-tip="Category">
+                                                <button class="btn btn-primary">
+                                                    <%= posts[i].category%>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+
+                        </li>
+                        <% } %>
+                </ul>
+            </div>
+        </div>
         <div class="divider pt-5 pb-5"></div>
     </div>
 
