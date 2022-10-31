@@ -48,6 +48,7 @@ module.exports = {
       const flaws = await Post.aggregate([
         {
           $match: {
+            user: mongoose.Types.ObjectId(req.user.id),
             category: "Flaws",
           },
         },
