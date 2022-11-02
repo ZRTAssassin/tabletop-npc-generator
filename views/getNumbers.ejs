@@ -16,51 +16,56 @@
                 <a href="/post/generate/getNumbers/9" class="btn">9</a>
             </div>
         </div>
-        <div tabindex="0" class="collapse border border-base-300 bg-base-100 rounded-box">
-            <div class="collapse-title text-xl font-medium">
-                <%= titles[0] %>
-            </div>
-            <div class="collapse-content">
+        <!-- wrap below in a for loop, looping over the parent array -->
+        <% for(var j=0; j<posts.length; j++) {%>
+            <div tabindex="0" class="collapse border border-base-300 bg-base-100 rounded-box">
+                <div class="collapse-title text-xl font-medium indicator flex justify-between">
+                    <h3><%= titles[j] %></h3>
+                    <i class="fa-solid fa-angles-down"></i>
+                </div>
+                <div class="collapse-content">
 
-                <ul class="flex flex-row flex-wrap justify-around list-unstyled">
-
-                    <% for(var i=0; i<posts.length; i++) {%>
-                        <li class="basis-1/4 pt-5 pb-5 h-64 m-5">
-                            <div class="card w-96 bg-neutral shadow-xl h-64">
-                                <a href="/post/<%= posts[i]._id%>">
-                                    <div class="card-body flex justify-between">
-                                        <div class="tooltip" data-tip="Name">
-                                            <h2 class="card-title text-secondary-focus">
-                                                <%= posts[i].traitName %>
-                                            </h2>
-                                        </div>
-                                        <div class="tooltip" data-tip="Description">
-                                            <p>
-                                                <%= posts[i].caption %>
-                                            </p>
-                                        </div>
-                                        <div class="card-actions justify-around">
-                                            <div class="tooltip" data-tip="Deck">
-                                                <button class="btn btn-secondary">
-                                                    <%= posts[i].deck%>
-                                                </button>
+                    <ul class="flex flex-row flex-wrap justify-around list-unstyled">
+                        <!-- nested for loop to loop over the inner arrays -->
+                        <% for(var i=0; i<posts[j].length; i++) {%>
+                            <li class="basis-1/4 pt-5 pb-5 h-64 m-5">
+                                <div class="card w-96 bg-neutral shadow-xl h-64">
+                                    <a href="/post/<%= posts[j][i]._id%>">
+                                        <div class="card-body flex justify-between">
+                                            <div class="tooltip" data-tip="Name">
+                                                <h2 class="card-title text-secondary-focus">
+                                                    <%= posts[j][i].traitName %>
+                                                </h2>
                                             </div>
-                                            <div class="tooltip" data-tip="Category">
-                                                <button class="btn btn-primary">
-                                                    <%= posts[i].category%>
-                                                </button>
+                                            <div class="tooltip" data-tip="Description">
+                                                <p>
+                                                    <%= posts[j][i].caption %>
+                                                </p>
+                                            </div>
+                                            <div class="card-actions justify-around">
+                                                <div class="tooltip" data-tip="Deck">
+                                                    <button class="btn btn-secondary">
+                                                        <%= posts[j][i].deck%>
+                                                    </button>
+                                                </div>
+                                                <div class="tooltip" data-tip="Category">
+                                                    <button class="btn btn-primary">
+                                                        <%= posts[j][i].category%>
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </a>
-                            </div>
+                                    </a>
+                                </div>
 
-                        </li>
-                        <% } %>
-                </ul>
+                            </li>
+                            <% } %>
+                            
+                    </ul>
+                </div>
+                <div class="divider pt-5 pb-5"></div>
             </div>
-        </div>
-        <div class="divider pt-5 pb-5"></div>
+            <% } %>
     </div>
 
     <%- include('partials/footer') -%>

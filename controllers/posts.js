@@ -31,30 +31,55 @@ module.exports = {
   getNumbers: async (req, res) => {
     try {
       const num = Number(req.params.num);
-      const posts = await Post.aggregate([
-        { $match: { user: mongoose.Types.ObjectId(req.user.id) } },
-        { $sample: { size: num } },
-      ]);
+      const posts = [];
       const titles = [
         "Flaws",
         "Motivation",
         "Strengths",
         "Given Circumstances",
-        "Ocupations",
+        "Occupations",
         "Secrets",
         "Formative Events",
         "Inciting Incidents",
       ];
-      const flaws = await Post.aggregate([
-        {
-          $match: {
-            user: mongoose.Types.ObjectId(req.user.id),
-            category: "Flaws",
+
+      const flaws = await aggregateNumPosts(num, "Flaws");
+      const motivations = await aggregateNumPosts(num, "Motivation");
+      const strengths = await aggregateNumPosts(num, "Strengths");
+      const givenCircumstances = await aggregateNumPosts(
+        num,
+        "Given Circumstances"
+      );
+      const occupations = await aggregateNumPosts(num, "Occupations");
+      const secrets = await aggregateNumPosts(num, "Secrets");
+      const formativeEvents = await aggregateNumPosts(num, "Formative Events");
+      const incitingIncidents = await aggregateNumPosts(
+        num,
+        "Inciting Incidents"
+      );
+
+      async function aggregateNumPosts(numberOfTraits, traitType) {
+        return await Post.aggregate([
+          {
+            $match: {
+              user: mongoose.Types.ObjectId(req.user.id),
+              category: traitType,
+            },
           },
-        },
-        { $sample: { size: num } },
-      ]);
-      console.log(flaws);
+          { $sample: { size: numberOfTraits } },
+        ]);
+      }
+      posts.push(
+        flaws,
+        motivations,
+        strengths,
+        givenCircumstances,
+        occupations,
+        secrets,
+        formativeEvents,
+        incitingIncidents
+      );
+      // console.log(posts);
       // Flaws
       // MotivationF
       // Strengths
@@ -63,7 +88,7 @@ module.exports = {
       // Secrets
       // Formative Events
       // Inciting Incidents
-      res.render("getNumbers.ejs", { titles: titles, posts: flaws });
+      res.render("getNumbers.ejs", { titles: titles, posts: posts });
     } catch (err) {
       console.log(err);
     }
