@@ -19,9 +19,11 @@
         <!-- wrap below in a for loop, looping over the parent array -->
         <% for(var j=0; j<posts.length; j++) {%>
             <div class="collapse border border-base-300 bg-base-100 rounded-box">
-                <input type="checkbox" >
+                <input type="checkbox">
                 <div class="collapse-title text-xl font-medium indicator flex justify-between">
-                    <h3><%= titles[j] %></h3>
+                    <h3>
+                        <%= titles[j] %>
+                    </h3>
                     <i class="fa-solid fa-angles-down"></i>
                 </div>
                 <div class="collapse-content">
@@ -31,37 +33,43 @@
                         <% for(var i=0; i<posts[j].length; i++) {%>
                             <li class="basis-1/4 pt-5 pb-5 h-64 m-5">
                                 <div class="card w-96 bg-neutral shadow-xl h-64">
-                                    <a href="/post/<%= posts[j][i]._id%>">
-                                        <div class="card-body flex justify-between">
-                                            <div class="tooltip" data-tip="Name">
-                                                <h2 class="card-title text-secondary-focus">
-                                                    <%= posts[j][i].traitName %>
-                                                </h2>
+
+                                    <div class="card-body flex justify-between">
+                                        <div class="tooltip" data-tip="Name">
+                                            <h2 class="card-title text-secondary-focus">
+                                                <%= posts[j][i].traitName %>
+                                            </h2>
+                                        </div>
+                                        <div class="tooltip" data-tip="Description">
+                                            <p>
+                                                <%= posts[j][i].caption %>
+                                            </p>
+                                        </div>
+                                        <div class="card-actions justify-around">
+                                            <div class="tooltip" data-tip="Deck">
+                                                <button class="btn btn-secondary">
+                                                    <%= posts[j][i].deck%>
+                                                </button>
                                             </div>
-                                            <div class="tooltip" data-tip="Description">
-                                                <p>
-                                                    <%= posts[j][i].caption %>
-                                                </p>
+                                            <div class="tooltip" data-tip="Category">
+                                                <button class="btn btn-primary">
+                                                    <%= posts[j][i].category%>
+                                                </button>
                                             </div>
-                                            <div class="card-actions justify-around">
-                                                <div class="tooltip" data-tip="Deck">
-                                                    <button class="btn btn-secondary">
-                                                        <%= posts[j][i].deck%>
-                                                    </button>
-                                                </div>
-                                                <div class="tooltip" data-tip="Category">
-                                                    <button class="btn btn-primary">
-                                                        <%= posts[j][i].category%>
-                                                    </button>
-                                                </div>
+                                            <div class="tooltip" data-tip="View Trait">
+                                                <button class="btn btn-secondary">
+                                                    <a href="/post/<%= posts[j][i]._id%>">View Trait</a>
+                                                </button>
                                             </div>
                                         </div>
-                                    </a>
+
+                                    </div>
+
                                 </div>
 
                             </li>
                             <% } %>
-                            
+
                     </ul>
                 </div>
                 <div class="divider pt-5 pb-5"></div>
