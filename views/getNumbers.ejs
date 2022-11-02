@@ -18,7 +18,8 @@
         </div>
         <!-- wrap below in a for loop, looping over the parent array -->
         <% for(var j=0; j<posts.length; j++) {%>
-            <div tabindex="0" class="collapse border border-base-300 bg-base-100 rounded-box">
+            <div class="collapse border border-base-300 bg-base-100 rounded-box">
+                <input type="checkbox" >
                 <div class="collapse-title text-xl font-medium indicator flex justify-between">
                     <h3><%= titles[j] %></h3>
                     <i class="fa-solid fa-angles-down"></i>
