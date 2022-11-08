@@ -1,7 +1,7 @@
 # Tabletop NPC Generator
 A quick tool put together for a client for helping to generate random NPC. Users can input their own traits to help expand the database of potential NPCs.
 
-**Link to project:** https://tabletop-npc-generator.cyclic.app/
+**Link to project:** https://ttrpg-npc-generator.cyclic.app/
 
 ![img](https://i.imgur.com/VWJCZFz.gif)
 
