@@ -1,20 +1,26 @@
-# Install
+# Tabletop NPC Generator
+A quick tool put together for a client for helping to generate random NPC. Users can input their own traits to help expand the database of potential NPCs.
 
-`npm install`
+**Link to project:** https://tabletop-npc-generator.cyclic.app/
 
----
+![img](https://i.imgur.com/VWJCZFz.gif)
 
-# Things to add
+## How It's Made:
 
-- Create a `.env` file in config folder and add the following as `key = value`
-  - PORT = 2121 (can be any port example: 3000)
-  - DB_STRING = `your database URI`
-  - CLOUD_NAME = `your cloudinary cloud name`
-  - API_KEY = `your cloudinary api key`
-  - API_SECRET = `your cloudinary api secret`
+**Tech used:** HTML, CSS, JavaScript, EJS, Node.js, Express, MongoDB
 
----
+Built with Node.js and Express.js as the backend, connected to MongoDB for the database, EJS for the templating language with styling by Tailwind CSS, specifically using DaisyUI components. This was put together with the budget of the client in mind, so utilizing pre-existing frameworks and component libraries was key to a successful deployment.
 
-# Run
+## Lessons Learned:
 
-`npm start`
+The biggests lessons from this were the specific aggregation pipeline features in MongoDB. Utilizing match and sample to build bigger quieries with randomization built in was an interesting challenge.
+
+## Examples:
+Take a look at these couple examples that I have in my own portfolio:
+
+**Tabletop Character Utilities:** https://github.com/ZRTAssassin/tabletop-character-utilities
+
+**Alien Adventure:** https://github.com/ZRTAssassin/Alien-Adventure
+
+**Dungeon Delver:** https://github.com/ZRTAssassin/Dungeon-Delver
+

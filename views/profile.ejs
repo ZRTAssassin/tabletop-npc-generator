@@ -17,18 +17,19 @@
                 <label for="name" class="label-text">Name</label>
               </label>
               <input type="text" placeholder="Name here" name="traitName" id="traitName"
-                class="input input-bordered input-primary w-full max-w-xs" />
+                class="input input-bordered input-primary w-full max-w-xs" required />
             </div>
             <div class="form-control mb-3">
               <label for="caption" class="form-label">Description</label>
-              <textarea class="form-control textarea textarea-primary" id="caption" name="caption"></textarea>
+              <textarea class="form-control textarea textarea-primary" id="caption" name="caption" required></textarea>
             </div>
             <div class="form-control">
               <label class="label">
                 <span class="label-text">Category</span>
               </label>
-              <select form="newTrait" name="category" id="category" class="select select-primary w-full max-w-xs">
-                <option disabled selected>Select one</option>
+              <select form="newTrait" name="category" id="category" class="select select-primary w-full max-w-xs"
+                required>
+                <option disabled selected value="">Select one</option>
                 <option>Flaws</option>
                 <option>Motivation</option>
                 <option>Strengths</option>
@@ -43,8 +44,8 @@
               <label class="label">
                 <span class="label-text">Deck Origin</span>
               </label>
-              <select form="newTrait" name="deck" id="deck" class="select select-primary w-full max-w-xs">
-                <option disabled selected>Select one</option>
+              <select form="newTrait" name="deck" id="deck" class="select select-primary w-full max-w-xs" required>
+                <option disabled selected value="">Select one</option>
                 <option>Basic</option>
                 <option>Fantasy</option>
                 <option>Horror</option>
@@ -55,20 +56,6 @@
               <button type="submit" class="btn btn-primary">Submit Trait</button>
             </div>
           </form>
-        </div>
-      </div>
-      <div class="col-6">
-        <ul class="row list-unstyled">
-          <% for(var i=0; i<posts.length; i++) {%>
-            <li class="col-6 justify-content-between mt-5">
-              <a href="/post/<%= posts[i]._id%>">
-                <img class="img-fluid" src="<%= posts[i].image%>">
-              </a>
-            </li>
-            <% } %>
-        </ul>
-        <div class="row justify-content-center mt-5">
-          <!-- <a class="btn btn-primary" href="/feed">Return to Feed</a> -->
         </div>
       </div>
     </div>
